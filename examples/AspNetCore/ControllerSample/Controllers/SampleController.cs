@@ -118,5 +118,21 @@ namespace ControllerSample.Controllers
         {
             return Ok();
         }
+
+        [Topic("pubsub", "deposit")]
+        [HttpPost("LogDeposit")]
+        public ActionResult LogDeposit(Transaction transaction)
+        {
+            logger.LogDebug($"Log deposit Id: {transaction.Id} Amount: {transaction.Amount}");
+            return NoContent();
+        }
+
+        [Topic("pubsub", "withdraw")]
+        [HttpPost("LogWithdraw")]
+        public ActionResult LogWithdraw(Transaction transaction)
+        {
+            logger.LogDebug($"Log withdraw Id: {transaction.Id} Amount: {transaction.Amount}");
+            return NoContent();
+        }
     }
 }
