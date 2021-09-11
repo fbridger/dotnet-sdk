@@ -68,6 +68,14 @@ namespace ControllerSample.Controllers
             return state.Value;
         }
 
+        [Topic("pubsub", "deposit")]
+        [HttpPost("LogDeposit")]
+        public ActionResult LogDeposit(Transaction transaction)
+        {
+            logger.LogDebug($"Log deposit Id: {transaction.Id} Amount: {transaction.Amount}");
+            return NoContent();
+        }
+
         /// <summary>
         /// Method for withdrawing from account as specified in transaction.
         /// </summary>
@@ -90,6 +98,14 @@ namespace ControllerSample.Controllers
             state.Value.Balance -= transaction.Amount;
             await state.SaveAsync();
             return state.Value;
+        }
+
+        [Topic("pubsub", "withdraw")]
+        [HttpPost("LogWithdraw")]
+        public ActionResult LogWithdraw(Transaction transaction)
+        {
+            logger.LogDebug($"Log withdraw Id: {transaction.Id} Amount: {transaction.Amount}");
+            return NoContent();
         }
 
         /// <summary>
