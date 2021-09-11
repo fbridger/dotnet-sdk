@@ -67,6 +67,7 @@ namespace Dapr.AspNetCore.IntegrationTest
 
                     subscriptions.Should().Contain(("testpubsub", "A", "topic-a", string.Empty, string.Empty));
                     subscriptions.Should().Contain(("pubsub", "B", "B", string.Empty, string.Empty));
+                    subscriptions.Should().Contain(("pubsub", "B", "B2", string.Empty, string.Empty));
                     subscriptions.Should().Contain(("custom-pubsub", "custom-C", "C", string.Empty, string.Empty));
                     subscriptions.Should().Contain(("pubsub", "register-user", "register-user", string.Empty, string.Empty));
                     subscriptions.Should().Contain(("pubsub", "register-user-plaintext", "register-user-plaintext", string.Empty, string.Empty));

@@ -23,6 +23,12 @@ namespace Dapr.AspNetCore.IntegrationTest.App
         {
         }
 
+        [Topic("pubsub", "B")]
+        [HttpPost("/B2")]
+        public void TopicB2()
+        {
+        }
+
         [CustomTopic("pubsub", "C")]
         [HttpPost("/C")]
         public void TopicC()
